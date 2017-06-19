@@ -1,0 +1,22 @@
+<!-- connectedin/perfis/templates/perfil.html -->
+
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 style="margin-top:0">{{ perfis.nome }}</h2>
+            <address>
+                <strong>{{ perfis.nome_empresa }}</strong><br>
+                <abbr title="Telefone">Tel:</abbr> {{ perfis.telefone }}<br>
+                <a href="mailto:{{ perfis.email }}">{{ perfis.email }}</a>
+            </address>
+
+            {% if ja_eh_contato %}
+                <div class="well well-sm">Vocês estão conectados!</div>
+            {% else %}
+                <a href="{% url 'convidar' perfis.id %}" class="btn btn-success" role="button">convidar</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
